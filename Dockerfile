@@ -15,5 +15,7 @@ RUN npm install -g pm2
 
 COPY ./codebase /var/www/
 
+COPY ./config /config
+
 #CMD [ "npm", "run", "start"]
-CMD [ "pm2", "start", "/var/www/server.js", "--watch" , "--no-daemon"]
+CMD [ "pm2", "start", "/config/pm2.json", "--no-daemon"]

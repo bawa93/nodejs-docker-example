@@ -1,0 +1,15 @@
+
+{
+    "apps" : [{
+      "name" : "nuxt-app",
+      "exec_mode" : "cluster",
+      "instances" : "1",
+      "script": "/var/www/server.js",
+      "watch": true,
+      "env": {
+        "HOST": "0.0.0.0",
+        "PORT": 3000,
+        "NODE_ENV": "dev"
+      }
+    }]
+  }
