@@ -4,9 +4,11 @@
   "repository": "https://github.com/buildkite/nodejs-docker-example",
   "license": "MIT",
   "scripts": {
-    "test": "mocha ./test.js"
+    "test": "mocha ./test.js",
+    "start": "node server.js"
   },
   "devDependencies": {
-    "mocha": "6.2.3"
+    "mocha": "6.2.3",
+    "express": "^4.16.1"
   }
 }
