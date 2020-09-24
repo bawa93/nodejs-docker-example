@@ -1,11 +1,11 @@
 FROM node:12-alpine
 
-RUN mkdir /app
-WORKDIR /app
+RUN mkdir /var/www
+WORKDIR /var/www
 
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH /var/www/node_modules/.bin:$PATH
 
-COPY package.json /app/
+COPY ./codebase/package.json /var/www/
 RUN npm install
 
 RUN npm install -g pm2
@@ -13,7 +13,7 @@ RUN npm install -g pm2
 # ADD package.json yarn.lock /app/
 # RUN yarn install
 
-COPY . /app/
+COPY ./codebase /var/www/
 
 #CMD [ "npm", "run", "start"]
-CMD [ "pm2", "start", "server.js", "--no-daemon"]
+CMD [ "pm2", "start", "/var/www/server.js", "--no-daemon"]
