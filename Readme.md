@@ -1,15 +1,19 @@
-# Buildkite Node.js Docker Example
+# Dockerfile and Docker-compose for nodejs express js pm2 for easy docker deployment
 
-[![Add to Buildkite](https://buildkite.com/button.svg)](https://buildkite.com/new)
-
-This repository is an example on how to test a [Node.js](https://nodejs.org/) project using [Buildkite](https://buildkite.com/) and [Docker](https://docker.com/). It uses the standard [Node.js Docker image](https://hub.docker.com/_/node/) and [Buildkite’s Docker-based Builds](https://buildkite.com/docs/guides/docker-containerized-builds).
+This repository uses volumes, ENV variables, dedicated pm2 configuration and everything that you would like to use in the real world production environment.
 
 ## Running locally
 
-To run the test locally on your development machine, you can run:
+To build the app locally on your development machine, you can run:
 
 ```bash
-docker-compose run app npm test
+docker-compose build --no-cache
+```
+
+Running the App
+
+```
+docker-compose up -d #remove d to see the working of it
 ```
 
 ## License
