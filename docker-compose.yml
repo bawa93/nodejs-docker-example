@@ -2,7 +2,11 @@ version: '3'
 
 services:
   app:
-    build: .
+    build:
+      context: ./
+      args:
+        - APP_CODE_PATH_HOST=${APP_CODE_PATH_HOST}
+        - APP_CODE_PATH_CONTAINER=${APP_CODE_PATH_CONTAINER}
     ports:
       - "3000:3000"
     expose: 

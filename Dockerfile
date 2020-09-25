@@ -1,11 +1,15 @@
 FROM node:12-alpine
 
-RUN mkdir /var/www
-WORKDIR /var/www
 
-ENV PATH /var/www/node_modules/.bin:$PATH
+ARG APP_CODE_PATH_HOST=./codebase
+ARG APP_CODE_PATH_CONTAINER=/var/www
 
-COPY ./codebase/package.json /var/www/
+RUN mkdir ${APP_CODE_PATH_CONTAINER}
+WORKDIR ${APP_CODE_PATH_CONTAINER}
+
+ENV PATH ${APP_CODE_PATH_CONTAINER}/node_modules/.bin:$PATH
+
+COPY ${APP_CODE_PATH_HOST}/package.json ${APP_CODE_PATH_CONTAINER}/
 RUN npm install
 
 RUN npm install -g pm2
@@ -13,7 +17,7 @@ RUN npm install -g pm2
 # ADD package.json yarn.lock /app/
 # RUN yarn install
 
-COPY ./codebase /var/www/
+COPY ${APP_CODE_PATH_HOST} ${APP_CODE_PATH_CONTAINER}/
 
 COPY ./config /config
 
