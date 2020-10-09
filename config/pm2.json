@@ -3,7 +3,7 @@
     "apps" : [{
       "name" : "nuxt-app",
       "exec_mode" : "cluster",
-      "instances" : "1",
+      "instances" : "2",
       "script": "/var/www/server.js",
       "watch": true,
       "env": {

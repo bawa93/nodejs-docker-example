@@ -20,6 +20,7 @@ RUN npm install -g pm2
 COPY ${APP_CODE_PATH_HOST} ${APP_CODE_PATH_CONTAINER}/
 
 COPY ./config /config
-
 #CMD [ "npm", "run", "start"]
-CMD [ "pm2", "start", "/config/pm2.json", "--no-daemon"]
+
+ENTRYPOINT [ "sh", "/config/entrypoint.sh"]
+CMD tail -f /dev/null
